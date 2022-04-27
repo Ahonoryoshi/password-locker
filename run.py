@@ -42,7 +42,7 @@ def create_cred(account,first_name,last_name, phone, email, password):
 def save_cred(cred):
     '''Function to save new cred'''
 
-    Credential.save_credential()
+    cred.save_credential()
 def delete_cred(user):
     '''Function to delete cred'''
     Credential.delete_credential()
@@ -71,7 +71,6 @@ def main():
     if short_code == 'ca':
         print("New Password locker account")
         print("-"*10)
-
         f_name = input("First Name:")
         l_name = input("Last Name:")
         phone = input('Phone number:')
@@ -94,7 +93,27 @@ def main():
                 ps = input('enter the correct password')
             print(f'{the_user.first_name}')
 
-            input(f'Hello {the_user.last_name}, What would you like to do? Reply with: ls-list accounts, na-new account, sa- search account  ')
+            short = input(f'Hello {the_user.last_name}, What would you like to do? Reply with: ls-list accounts, na-new account, sa- search account  ')
+            if short == 'ls':
+                print('ls')
+            elif short == 'na':
+                userId = input('Enter your user id')
+                print('na')
+                acc = input('account')
+                first = input("First Name:")
+                last = input("Last Name:")
+                n = input('Phone number:')
+                em = input('email address:')
+                pas = input('Create Password:')
+                
+
+                save_cred(create_cred(userId,acc,first,last,n, em, pas))
+                
+
+            else:
+                print('search')
+
+            
 
 
 

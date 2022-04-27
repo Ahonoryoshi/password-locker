@@ -2,19 +2,20 @@ class Credential:
     '''
     Class that generates new instances of account credentials
     '''
-    def __init__(self,account,first_name,last_name,phone_number,email,password):
+    def __init__(self,userId, account,first_name,last_name,phone_number,email,password):
 
         '''
         __init__ method that helps us define properties for our objects.
 
         Args:
-
+            userId :id
             account: new account
             first_name: New credent first name.
             last_name : New credential last name.
             number: New credential phone number.
             email : New credential email address.
         '''
+        self.userId = userId
         self.account = account
         self.first = first_name
         self.last = last_name
