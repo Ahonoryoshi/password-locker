@@ -2,7 +2,7 @@ class User:
     '''
     Class that generates new instances of users
     '''
-    def __init__(self,first_name,last_name,phone_number,email):
+    def __init__(self,first_name,last_name,phone_number,email,password):
 
         '''
         __init__ method that helps us define properties for our objects.
@@ -17,6 +17,7 @@ class User:
         self.last = last_name
         self.number = phone_number
         self.email = email
+        self.password = password
     user_list = [] #empty list
     def save_user(self):
         '''Save new user to user_list'''
@@ -39,5 +40,12 @@ class User:
         for user in cls.user_list:
             if user.phone_number == number:
                 return user
-                
+
+    @classmethod
+    def display_users(cls):
+        '''
+        method that returns the user list
+        '''
+        return cls.user_list
+      
 
