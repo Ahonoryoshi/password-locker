@@ -7,4 +7,18 @@ def create_user(first, last, phone, email, password):
     new_user = User(first, last, phone, email, password)
 def save_user(user):
     '''Function to save new user'''
-    user.save_user()
+
+    User.save_user()
+def delete_user(user):
+    '''Function to delete user'''
+    User.delete_user()
+def find_contact(number):
+    '''function to find contact by number'''
+
+    return User.find_by_number(number)
+def display_users():
+    '''function to return all accounts'''
+    return User.display_users()
+
+
+def main()
