@@ -17,4 +17,12 @@ class User:
         self.last = last_name
         self.number = phone_number
         self.email = email
-       
+    user_list = [] #empty list
+    def save_user(self):
+        '''Save new user to user_list'''
+
+        User.user_list.append(self)
+    def delete_user(self):
+        '''delete a password-locker user'''
+        User.user_list.remove(self)
+        
