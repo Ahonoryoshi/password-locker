@@ -1,3 +1,6 @@
+#from operator import truediv
+
+
 class User:
     '''
     Class that generates new instances of users
@@ -8,24 +11,35 @@ class User:
         __init__ method that helps us define properties for our objects.
 
         Args:
-            first_name: New User first name.
-            last_name : New User last name.
+            first_name: New User first first_name.
+            last_name : New User last last_name.
             number: New contact phone number.
             email : New contact email address.
         '''
-        self.first = first_name
-        self.last = last_name
-        self.number = phone_number
+        self.first_name = first_name
+        self.last_name = last_name
+        self.phone_number = phone_number
         self.email = email
         self.password = password
     user_list = [] #empty list
     def save_user(self):
         '''Save new user to user_list'''
 
-        User.user_list.append(self)
+        self.user_list.append(self)
     def delete_user(self):
         '''delete a password-locker user'''
-        User.user_list.remove(self)
+        self.user_list.remove(self)
+
+    @classmethod
+    def user_exists(cls,number):
+        '''Function that checks if a user is regestered'''
+        for user in cls.user_list:
+            if user.phone_number == number:
+                return True
+            else:
+                return False
+
+
     @classmethod
     def find_by_number(cls,number):
         '''

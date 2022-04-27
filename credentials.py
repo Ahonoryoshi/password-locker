@@ -10,10 +10,10 @@ class Credential:
         Args:
 
             account: new account
-            first_name: New User first name.
-            last_name : New User last name.
-            number: New contact phone number.
-            email : New contact email address.
+            first_name: New credent first name.
+            last_name : New credential last name.
+            number: New credential phone number.
+            email : New credential email address.
         '''
         self.account = account
         self.first = first_name
@@ -22,12 +22,12 @@ class Credential:
         self.email = email
         self.password = password
     credential_list = [] #empty list
-    def save_user(self):
-        '''Save new user to credential_list'''
+    def save_credential(self):
+        '''Save new credential to credential_list'''
 
         Credential.credential_list.append(self)
     def delete_credential(self):
-        '''delete a password-locker user'''
+        '''delete a password-locker credential'''
         Credential.credential_list.remove(self)
     @classmethod
     def find_by_number(cls,account):
@@ -40,15 +40,15 @@ class Credential:
             Contact of person that matches the number.
         '''
 
-        for user in cls.user_list:
-            if user.account == account:
-                return user
+        for credential in cls.credential_list:
+            if credential.account == account:
+                return credential
 
     @classmethod
-    def display_users(cls):
+    def display_credentials(cls):
         '''
-        method that returns the user list
+        method that returns the credential list
         '''
-        return cls.user_list
+        return cls.credential_list
       
 
