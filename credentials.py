@@ -17,12 +17,18 @@ class Credential:
         '''
         self.userId = userId
         self.account = account
-        self.first = first_name
-        self.last = last_name
-        self.number = phone_number
+        self.first_name= first_name
+        self.last_name = last_name
+        self.phone_number = phone_number
         self.email = email
         self.password = password
+
+
+
     credential_list = [] #empty list
+
+
+    
     def save_credential(self):
         '''Save new credential to credential_list'''
 
