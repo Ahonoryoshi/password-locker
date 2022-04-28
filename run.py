@@ -27,7 +27,7 @@ def display_user():
 
 def login_user(username, phone_number, password):
     """
-    function to check if a user exist and then login the user in.
+    checks if a user exist and then login the user in.
     """
 
     check_user = Credentials.verify_user(username,phone_number, password)
@@ -134,6 +134,7 @@ def main():
 
 
     elif short_code == "li":
+        
         print("*" * 40)
         print("Enter your User name, phone number, and your Password to log in:")
         print("*" * 40)
@@ -142,9 +143,12 @@ def main():
         password = input("password: ")
         login = login_user(username, phone_number, password)
 
-        if login_user == login:
+        if login:
             print(f"Hello {username}.Welcome To PassWord Locker")
             print("\n")
+            
+        else:
+            print('No such account found')
 
     
     while True:

@@ -37,14 +37,11 @@ class Credential:
         '''delete a password-locker credential'''
         Credential.credential_list.remove(self)
     @classmethod
-    def find_by_number(cls,account):
+    def find_by_account(cls,account):
         '''
-        Method that takes in a number and returns credentials that matches that account.
+        Method that takes in an account number and returns credentials that matches that account.
 
-        Args:
-            number: Phone number to search for
-        Returns :
-            Contact of person that matches the number.
+        
         '''
 
         for credential in cls.credential_list:
