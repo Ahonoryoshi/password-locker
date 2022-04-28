@@ -1,6 +1,6 @@
-import numbers
+
 from user import User
-from user import Credentials
+from creds import Credentials
 
 
 def create_new_user(username,phone_number, password):
@@ -34,11 +34,11 @@ def login_user(username, phone_number, password):
     return check_user
 
 
-def create_new_credential(account, userName, password):
+def create_new_credential(account, userName, phone_number, password):
     """
     Function to create new credentials for a user account
     """
-    new_credential = Credentials(account, userName, password)
+    new_credential = Credentials(account, userName,phone_number, password)
     return new_credential
 
 
@@ -93,10 +93,18 @@ def copy_password(account):
 
 
 def main():
+    save_user(create_new_user('Ahonoryoshi','0743088648', 'yoshi@12548?'))
+
+
+
+
+
     print(
         "Hello and  Welcome to Password Locker...\n select one of the short codes below to proceed:\n CA --->  To Create New Account  \n LI --->  To Log in to existing account  \n"
     )
     short_code = input("").lower().strip()
+
+
     if short_code == "ca":
         print("Register here:")
         print("*" * 20)
@@ -114,16 +122,21 @@ def main():
                 break
             else:
                 print("Invalid option please try again")
+
+
         save_user(create_new_user(username,phone_number, password))
         print("*" * 40)
         print(
             f"Hello {username}, Your account has been created succesfully! Your password is: {password}"
         )
         print("*" * 40)
+
+
+
     elif short_code == "li":
         print("*" * 40)
         print("Enter your User name, phone number, and your Password to log in:")
-        print("*" * 45)
+        print("*" * 40)
         username = input("Username: ")
         phone_number = input("Phone Number:")
         password = input("password: ")
@@ -132,9 +145,11 @@ def main():
         if login_user == login:
             print(f"Hello {username}.Welcome To PassWord Locker")
             print("\n")
+
+    
     while True:
         print(
-            "Use these short codes:\n CC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n GP - Generate A randomn password \n Del - Delete credential \n EX - Exit the application \n"
+            "Use these short codes:\n CC - Create a new account credential \n DC - Display saved Credentials \n FC - Find an account's credentials \n DEL - Delete a credential \n EX - Exit password locker \n"
         )
         short_code = input().lower().strip()
         if short_code == "cc":
@@ -144,7 +159,7 @@ def main():
             account = input().lower()
             phone = input('Phone_number')
             print("Your Account username")
-            userName = input()
+            username = input()
             while True:
                 print(
                     " CP - To type your own password if you already have an account:\n GP - To generate random Password"
@@ -158,21 +173,21 @@ def main():
                     break
                 else:
                     print("Invalid option please try again")
-            save_credentials(create_new_credential(account, userName,phone, password))
+            save_credentials(create_new_credential(account, username,phone, password))
             print("\n")
             print(
-                f"Account Credential for: {account} - UserName: {userName} - Password:{password} created succesfully"
+                f"Account Credential for: {account} - UserName: {username} - Password:{password} created succesfully"
             )
             print("\n")
         elif short_code == "dc":
             if display_accounts_details():
                 print("Here's your list of acounts: ")
 
-                print("*" * 30)
-                print("_" * 30)
+                print("*" * 80)
+                print("_" * 40)
                 for account in display_accounts_details():
                     print(
-                        f" Account:{account.account} \n phone:{account.phone_number}\n User Name:{username}\n Password:{password}"
+                        f" Account:{account.account} \n phone Number:{account.phone_number}\n User Name:{username}\n Password:{password}"
                     )
                     print("_" * 40)
                 print("*" * 40)
@@ -184,8 +199,8 @@ def main():
             if find_credential(search_name):
                 search_credential = find_credential(search_name)
                 print(f"Account Name : {search_credential.account}")
-                print("-" * 40)
-                print(f"User Name: {search_credential.userName}")
+                print("-" * 50)
+                print(f"User Name: {search_credential.username}")
                 print(f"Phone : {search_credential.phone_number}")
                 print( f"Password :{search_credential.password}")
                 print("-" * 50)
