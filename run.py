@@ -5,7 +5,7 @@ from creds import Credentials
 
 def create_new_user(username,phone_number, password):
     """
-    Function to create a new user with a username and password
+    Function to create a new user with a username, phone number, and password
     """
     new_user = User(username,phone_number, password)
     return new_user
@@ -20,17 +20,17 @@ def save_user(user):
 
 def display_user():
     """
-    Function to display existing user
+    Function to display existing users
     """
     return User.display_user()
 
 
 def login_user(username, phone_number, password):
     """
-    checks if a user exist and then login the user in.
+    checks if a user exists and then login the user in.
     """
 
-    check_user = Credentials.verify_user(username,phone_number, password)
+    check_user = User.check_user(username,phone_number, password)
     return check_user
 
 
@@ -51,14 +51,14 @@ def save_credentials(credentials):
 
 def display_accounts_details():
     """
-    Function to display all the saved credential.
+    Function to display all the saved credentials.
     """
     return Credentials.display_credentials()
 
 
 def delete_credential(credentials):
     """
-    Function to delete a Credentials from credentials list
+    Function to delete a Credential from credentials list
     """
     credentials.delete_credentials()
 
@@ -85,13 +85,6 @@ def generate_Password():
     return auto_password
 
 
-def copy_password(account):
-    """
-    function to copy the password using the pyperclip
-    """
-    return Credentials.copy_password(account)
-
-
 def main():
     save_user(create_new_user('Ahonoryoshi','0743088648', 'yoshi@12548?'))
 
@@ -99,9 +92,10 @@ def main():
 
 
 
-    print(
-        "Hello and  Welcome to Password Locker...\n select one of the short codes below to proceed:\n CA --->  To Create New Account  \n LI --->  To Log in to existing account  \n"
-    )
+    print("Hello and  Welcome to Password Locker..")
+    print('select one of the short codes below to proceed:')
+    print('CA <--->  To Create New Account')
+    print ('LI <--->  To Log in to existing account')
     short_code = input("").lower().strip()
 
 
@@ -236,9 +230,7 @@ def main():
             print("Thanks for using password-locker! Hope to see you soon")
             break
         else:
-            print("Wrong entry... Check your entry and retry")
-    else:
-        print('Enter a valid input')
+            print("Enter a valid input and retry")
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ class Credentials:
     Class to create account instances
     """
 
-    credentials_list = []
+    credentials_list = [] #an empty credentials list 
     def __init__(self, account, username,phone_number, password):
         """
         method that defines user credentials to be stored
@@ -19,16 +19,7 @@ class Credentials:
         self.phone_number = phone_number
         self.password = password
 
-    @classmethod
-    def verify_user(cls, username, phone_number, password):
-        """
-        checks for registered users
-        """
-        myuser = ""
-        for user in User.user_list:
-            if user.username == username and user.password == password and user.phone_number == phone_number:
-                myuser == user.username
-        return myuser
+
 
     
 

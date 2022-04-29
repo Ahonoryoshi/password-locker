@@ -21,6 +21,8 @@ class User:
 
     user_list = []
 
+
+
     def save_user(self):
         """
         saves a new user account
@@ -39,6 +41,16 @@ class User:
         User.user_list.remove(
             self
         )
+    @classmethod
+    def check_user(cls, username, phone_number, password):
+        """
+        checks for registered users
+        """
+        myuser = ""
+        for user in User.user_list:
+            if user.username == username and user.password == password and user.phone_number == phone_number:
+                myuser == user.username
+        return myuser
 
 ##################
 ##################
